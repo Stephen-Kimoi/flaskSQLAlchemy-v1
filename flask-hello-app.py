@@ -10,7 +10,10 @@ class Persons(db.Model):
     id = db.Column(db.Integer, primary_key=True) 
     name = db.Column(db.String(), nullable=False) 
 
+db.create_all() 
+
 @app.route('/')
 
-def index(): 
-    return 'Hello Steve' 
+def index():  
+    person = Persons.query.first()
+    return 'Hello ' + person.name
